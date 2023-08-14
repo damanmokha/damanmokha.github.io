@@ -617,46 +617,34 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
 
-            // SendinBlue API Endpoint URL
-            const apiUrl = 'https://api.sendinblue.com/v3/smtp/email';
-
-            // SendinBlue API Key
-            const apiKey = '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';
+            // Lambda function URL
+            const lambdaUrl = 'https://eswklavbmrzrhckcknndeqz47q0wpfis.lambda-url.ap-south-1.on.aws/';
 
             // Email data
             const emailData = {
-                sender: { name: name, email: "damanmokha24@gmail.com" },
-                to: [{ email: 'damanmokha24@gmail.com' }],
-                htmlContent: `
-                    <p>A contact inquiry has been received on the site:</p>
-                    <table border="1">
-                        <tr><td>Name:</td><td>${name}</td></tr>
-                        <tr><td>Email:</td><td>${email}</td></tr>
-                        <tr><td>Content:</td><td>${message}</td></tr>
-                        <tr><td>Time:</td><td>${new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"})}</td></tr>
-                    </table>
-                `,
-                subject: 'Contact Form - damanmokha.com'
+                name: name,
+                email: email,
+                content: message,
+                time: new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"})
             };
 
-            // Make the API request using Fetch API
-            fetch(apiUrl, {
+            // Make the POST request using Fetch API
+            fetch(lambdaUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'api-key': apiKey
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(emailData)
             })
                 .then(response => response.json())
                 .then(data => {
-                    if (data.messageId) {
-                        const returnMessage = document.querySelector('.returnmessage');
+                    const returnMessage = document.querySelector('.returnmessage');
+                    // if (data.statusCode === 200) {
                         returnMessage.innerHTML = returnMessage.getAttribute('data-success');
                         form.reset();
-                    } else {
-                        console.error('Email sending failed:', data);
-                    }
+                    // } else {
+                    //     console.error('Error:', data.message);
+                    // }
                 })
                 .catch(error => console.error('Error:', error));
         });
