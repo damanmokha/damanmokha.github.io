@@ -189,9 +189,9 @@ function elisc_tm_experience_popup(){
 		var content = parent.find('.hidden_details').html();
 		modalBox.addClass('opened');
 		modalBox.find('.description_wrap').html(content);
-		modalBox.find('.descriptions').prepend('<div class="top_image"><img src="img/thumbs/4-2.jpg" alt="" /><div class="main" data-img-url="'+elImage+'"></div></div>');
-		elisc_tm_data_images();
-		modalBox.find('.descriptions .top_image').after('<div class="infos"><div class="year"><span>'+year+'</span></div><div class="job"><span>'+place+'</span><h3>'+job+'</h3></div></div>');
+		// modalBox.find('.descriptions').prepend('<div class="top_image"><img src="img/thumbs/4-2.jpg" alt="" /><div class="main" data-img-url="'+elImage+'"></div></div>');
+		// elisc_tm_data_images();
+		// modalBox.find('.descriptions .top_image').after('<div class="infos"><div class="year"><span>'+year+'</span></div><div class="job"><span>'+place+'</span><h3>'+job+'</h3></div></div>');
 		return false;
 	});
 	closePopup.on('click',function(){
@@ -221,9 +221,9 @@ function elisc_tm_service_popup(){
 		var content = parent.find('.hidden_details').html();
 		modalBox.addClass('opened');
 		modalBox.find('.description_wrap').html(content);
-		modalBox.find('.descriptions').prepend('<div class="top_image"><img src="img/thumbs/4-2.jpg" alt="" /><div class="main" data-img-url="'+elImage+'"></div></div>');
-		elisc_tm_data_images();
-		modalBox.find('.descriptions .top_image').after('<div class="main_title"><h3>'+title+'</h3></div>');
+		// modalBox.find('.descriptions').prepend('<div class="top_image"><img src="img/thumbs/4-2.jpg" alt="" /><div class="main" data-img-url="'+elImage+'"></div></div>');
+		// elisc_tm_data_images();
+		modalBox.find('.descriptions').before('<div class="main_title"><h3>'+title+'</h3></div>');
 		return false;
 	});
 	closePopup.on('click',function(){
