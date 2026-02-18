@@ -6,10 +6,14 @@
 (function () {
   'use strict';
 
+  /* ---------- Global Config ---------- */
+  var EXPERIENCE_START_YEAR = 2013;
+
   /* ---------- DOM Ready ---------- */
   document.addEventListener('DOMContentLoaded', init);
 
   function init() {
+    initExperience();
     initNavbar();
     initMobileMenu();
     initScrollReveal();
@@ -17,6 +21,37 @@
     initActiveNav();
     initContactForm();
     initCountUp();
+  }
+
+  /* ---------- Dynamic Experience Years ---------- */
+  function initExperience() {
+    var currentYear = new Date().getFullYear();
+    var yearsOfExperience = Math.floor(currentYear - EXPERIENCE_START_YEAR);
+
+    // Update all elements with class 'dynamic-years'
+    var yearElements = document.querySelectorAll('.dynamic-years');
+    yearElements.forEach(function (el) {
+      el.textContent = yearsOfExperience;
+    });
+
+    // Update counter data attribute for animated counter
+    var counterElement = document.querySelector('[data-count-experience]');
+    if (counterElement) {
+      counterElement.setAttribute('data-count', yearsOfExperience);
+    }
+
+    // Update meta tags
+    var metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      var content = metaDescription.getAttribute('content');
+      metaDescription.setAttribute('content', content.replace(/\d+\+?\s*years?/i, yearsOfExperience + '+ years'));
+    }
+
+    var ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      var ogContent = ogDescription.getAttribute('content');
+      ogDescription.setAttribute('content', ogContent.replace(/\d+\+?\s*years?/i, yearsOfExperience + '+ years'));
+    }
   }
 
   /* ---------- Navbar Scroll ---------- */

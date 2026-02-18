@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c63ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="256" height="256" rx="48" fill="#0f0f14"/>
+  
+  <!-- DM Monogram -->
+  <g fill="url(#grad)">
+    <!-- D -->
+    <path d="M 60 80 L 60 176 L 100 176 C 130 176 145 160 145 128 C 145 96 130 80 100 80 Z M 85 100 L 100 100 C 115 100 120 108 120 128 C 120 148 115 156 100 156 L 85 156 Z"/>
+    
+    <!-- M -->
+    <path d="M 160 80 L 160 176 L 180 176 L 180 110 L 208 176 L 225 176 L 225 80 L 205 80 L 205 146 L 177 80 Z"/>
+  </g>
+  
+  <!-- Accent dot -->
+  <circle cx="230" cy="90" r="8" fill="#6c63ff" opacity="0.6"/>
+</svg>
